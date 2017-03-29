@@ -15,7 +15,7 @@
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteX="22dp"
         tools:layout_editor_absoluteY="16dp" />
 
     <ImageView
@@ -30,25 +30,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="178dp">
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="176dp">
 
         <ImageButton
             android:id="@+id/btnOption1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
             app:srcCompat="@android:drawable/bottom_bar" />
 
         <ImageButton
             android:id="@+id/btnOption2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
             app:srcCompat="@android:drawable/bottom_bar" />
 
         <ImageButton
             android:id="@+id/btnOption3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            app:srcCompat="@android:drawable/bottom_bar" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
             app:srcCompat="@android:drawable/bottom_bar" />
     </LinearLayout>
 
