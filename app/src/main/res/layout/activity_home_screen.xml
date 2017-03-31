@@ -25,6 +25,7 @@
             android:id="@+id/btnPlay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="playGame"
             app:srcCompat="@android:drawable/bottom_bar" />
 
         <ImageButton
@@ -39,6 +40,7 @@
             android:id="@+id/btnOther"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="testBonus"
             app:srcCompat="@android:drawable/ic_media_play"
             tools:layout_editor_absoluteX="177dp"
             tools:layout_editor_absoluteY="232dp" />
