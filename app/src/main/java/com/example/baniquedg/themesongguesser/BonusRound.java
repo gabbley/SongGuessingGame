@@ -4,7 +4,6 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.GridLayout;
 
@@ -13,13 +12,12 @@ import java.util.Collections;
 import java.util.Random;
 
 public class BonusRound extends AppCompatActivity {
-
-    public GridLayout btns = (GridLayout) findViewById(R.id.gridButtons);
+    *public GridLayout btns = (GridLayout) findViewById(R.id.gridButtons);
     public ArrayList<Button> btnList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+      //  this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bonus_round);
 

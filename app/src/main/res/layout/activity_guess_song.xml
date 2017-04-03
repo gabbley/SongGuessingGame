@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -16,7 +16,9 @@
         android:textSize="24sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="22dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteY="16dp"
+        android:layout_above="@+id/imgLogos"
+        android:layout_centerHorizontal="true" />
 
     <ImageView
         android:id="@+id/imgLogos"
@@ -24,14 +26,21 @@
         android:layout_height="100dp"
         app:srcCompat="?android:attr/listChoiceIndicatorMultiple"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="50dp" />
+        tools:layout_editor_absoluteY="50dp"
+        android:layout_above="@+id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="22dp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="42dp"
-        tools:layout_editor_absoluteY="176dp">
+        tools:layout_editor_absoluteY="176dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="73dp"
+        android:id="@+id/linearLayout">
 
         <ImageButton
             android:id="@+id/btnOption1"
@@ -62,7 +71,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="104dp"
-        tools:layout_editor_absoluteY="447dp">
+        tools:layout_editor_absoluteY="447dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="11dp">
 
         <Button
             android:id="@+id/btnHome"
@@ -82,4 +94,4 @@
             android:textStyle="bold" />
     </GridLayout>
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
