@@ -10,15 +10,16 @@
         android:id="@+id/txtGameTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/imgLogos"
+        android:layout_centerHorizontal="true"
         android:fontFamily="serif-monospace"
         android:text="Guess That Theme Song!"
         android:textAlignment="center"
+        android:textColor="?android:attr/colorAccent"
         android:textSize="24sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="22dp"
-        tools:layout_editor_absoluteY="16dp"
-        android:layout_above="@+id/imgLogos"
-        android:layout_centerHorizontal="true" />
+        tools:layout_editor_absoluteY="16dp" />
 
     <ImageView
         android:id="@+id/imgLogos"
@@ -46,6 +47,7 @@
             android:id="@+id/btnOption1"
             android:layout_width="300dp"
             android:layout_height="60dp"
+            android:onClick="buttonClick"
             app:srcCompat="@android:drawable/bottom_bar" />
 
         <ImageButton
@@ -74,7 +76,8 @@
         tools:layout_editor_absoluteY="447dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="11dp">
+        android:layout_marginBottom="11dp"
+        android:id="@+id/gridLayout">
 
         <Button
             android:id="@+id/btnHome"
@@ -93,5 +96,44 @@
             android:text="Reset"
             android:textStyle="bold" />
     </GridLayout>
+
+    <TextView
+        android:id="@+id/lblCorrect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="Correct: "
+        android:layout_above="@+id/txtGameTitle"
+        android:layout_alignLeft="@+id/linearLayout"
+        android:layout_alignStart="@+id/linearLayout" />
+
+    <TextView
+        android:id="@+id/lblCorrectScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/lblCorrect"
+        android:layout_toEndOf="@+id/lblCorrect"
+        android:layout_toRightOf="@+id/lblCorrect"
+        android:text="0" />
+
+    <TextView
+        android:id="@+id/lblIncorrect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Incorrect: "
+        android:layout_alignBaseline="@+id/lblCorrectScore"
+        android:layout_alignBottom="@+id/lblCorrectScore"
+        android:layout_toLeftOf="@+id/lblIncorrectScore"
+        android:layout_toStartOf="@+id/lblIncorrectScore" />
+
+    <TextView
+        android:id="@+id/lblIncorrectScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:layout_alignBaseline="@+id/lblIncorrect"
+        android:layout_alignBottom="@+id/lblIncorrect"
+        android:layout_toRightOf="@+id/linearLayout"
+        android:layout_toEndOf="@+id/linearLayout" />
 
 </RelativeLayout>

@@ -2,21 +2,25 @@ package com.example.baniquedg.themesongguesser;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class GuessSong extends AppCompatActivity {
 
-    public ArrayList<MediaPlayer> playlist = new ArrayList<MediaPlayer>();
+    //public ArrayList<MediaPlayer> playlist = new ArrayList<MediaPlayer>();
+    public int numCorrect, numIncorrect;
+    public TextView corr;
+    public TextView incorr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_song);
+        initialSetup();
     }
 
     public String whichButtonClicked(){
@@ -24,19 +28,33 @@ public class GuessSong extends AppCompatActivity {
         return "";
     }
 
+    public void buttonClick(View view){
+        score();
+        buttonClickSound();
+    }
+
+    public void initialSetup(){
+        corr = (TextView) findViewById(R.id.lblCorrectScore);
+        incorr = (TextView) findViewById(R.id.lblIncorrectScore);
+        numIncorrect = 0;
+        numCorrect = 0;
+        corr.setText("0");
+        incorr.setText("0");
+    }
+
     public void compareSong(){
 
     }
 
+    //plays click sound every time button is clicked
     public void buttonClickSound(){
-        //plays sound every time button is clicked
         MediaPlayer click = MediaPlayer.create(this, R.raw.click);
         click.start();
     }
 
+
+    //places all theme songs in an ArrayList
     public ArrayList<MediaPlayer> arrSongs(ArrayList<MediaPlayer> playlist){
-
-
         playlist.add(MediaPlayer.create(this, R.raw.backyardigans));
         playlist.add(MediaPlayer.create(this, R.raw.bigcomfycouch));
         playlist.add(MediaPlayer.create(this, R.raw.blues));
@@ -84,9 +102,29 @@ public class GuessSong extends AppCompatActivity {
         return playlist;
     }
 
+    //brings user to home screen
     public void homeScreen(View view) {
         Class home = HomeScreen.class;
         Intent intent = new Intent(this, home);
         startActivity(intent);
     }
+
+    //updates score
+    public void score(){
+        if (isCorrect()){
+            numCorrect++;
+            corr.setText(numCorrect + "");
+        }
+        else{
+            numIncorrect++;
+            incorr.setText(numIncorrect + "");
+        }
+
+    }
+
+    //determines if guess is correct
+    public boolean isCorrect(){
+        return true;
+    }
 }
+

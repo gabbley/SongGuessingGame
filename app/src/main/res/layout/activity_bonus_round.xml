@@ -27,9 +27,9 @@
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="32dp"
         tools:layout_editor_absoluteY="55dp"
-        android:layout_marginTop="64dp"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true">
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp">
 
         <Button
             android:id="@+id/button6"
@@ -238,18 +238,18 @@
         android:layout_alignEnd="@+id/gridButtons" />
 
     <TextView
-        android:id="@+id/lblIncorrectScore"
+        android:id="@+id/lblCorrectScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0"
-        tools:layout_editor_absoluteX="335dp"
-        tools:layout_editor_absoluteY="16dp"
-        android:layout_marginLeft="11dp"
-        android:layout_marginStart="11dp"
         android:layout_alignBaseline="@+id/lblCorrect"
         android:layout_alignBottom="@+id/lblCorrect"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:layout_toEndOf="@+id/lblCorrect"
         android:layout_toRightOf="@+id/lblCorrect"
-        android:layout_toEndOf="@+id/lblCorrect" />
+        android:text="0"
+        tools:layout_editor_absoluteX="335dp"
+        tools:layout_editor_absoluteY="16dp" />
 
     <TextView
         android:id="@+id/lblIncorrectScore"
