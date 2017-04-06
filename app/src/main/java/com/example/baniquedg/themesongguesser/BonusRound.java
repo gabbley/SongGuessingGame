@@ -5,6 +5,7 @@ import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.TextView;
@@ -22,7 +23,7 @@ public class BonusRound extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-      //  this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bonus_round);
         btns = (GridLayout) findViewById(R.id.gridButtons);
@@ -41,8 +42,8 @@ public class BonusRound extends AppCompatActivity {
         incorr.setText("0");
 
         allButtons(); //places all buttons into an arrayList
-        for (int i = 0; i<3; i++){ //randomly selects three buttons to color
-            randomColorButton();
+        for (int i = 0; i<5; i++){ //randomly selects five buttons to color
+            randomColorButton().setBackgroundColor(Color.CYAN);
         }
     }
 
@@ -65,13 +66,9 @@ public class BonusRound extends AppCompatActivity {
 
     }
 
-    public void randomColorButton(){
-        int a = (int) Math.random() * btns.getChildCount();
-        int b = (int) Math.random() * btns.getChildCount();
-        int c = (int) Math.random() * btns.getChildCount();
-        btnList.get(a).setBackgroundColor(Color.CYAN);
-        btnList.get(b).setBackgroundColor(Color.CYAN);
-        btnList.get(c).setBackgroundColor(Color.CYAN);
+    public Button randomColorButton(){
+        int a = (int) (Math.random() * btns.getChildCount());
+        return btnList.get(a);
     }
 
     public void btnIsPlaying(){
