@@ -48,6 +48,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="66dp"
+                android:onClick="playGame"
                 app:srcCompat="@android:drawable/bottom_bar"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="0dp" />

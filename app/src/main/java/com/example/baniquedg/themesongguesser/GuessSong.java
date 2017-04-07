@@ -1,6 +1,7 @@
 package com.example.baniquedg.themesongguesser;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -40,10 +41,16 @@ public class GuessSong extends AppCompatActivity {
         numCorrect = 0;
         corr.setText("0");
         incorr.setText("0");
+        TextView title = (TextView) findViewById(R.id.txtGameTitle);
+        discoTitle(title);
     }
 
     public void compareSong(){
 
+    }
+
+    public void resetScreen(View view){
+        initialSetup();
     }
 
     //plays click sound every time button is clicked
@@ -125,6 +132,39 @@ public class GuessSong extends AppCompatActivity {
     //determines if guess is correct
     public boolean isCorrect(){
         return true;
+    }
+
+    public void discoTitle(final TextView disco){
+        Thread t = new Thread() {
+
+
+            @Override
+            public void run() {
+                try {
+                    while (!isInterrupted()) {
+                        Thread.sleep(500);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                disco.setTextColor(randColor());
+                            }
+                        });
+                    }
+                } catch (InterruptedException e) {
+                }
+            }
+        };
+
+        t.start();
+    }
+
+    //returns a random color to set word to
+    public int randColor(){
+
+        int[] colorArray = new int[] {Color.YELLOW, Color.GREEN,
+                Color.RED, Color.BLUE, Color.MAGENTA, Color.BLACK};
+
+        return colorArray[(int)(Math.random() * colorArray.length) ];
     }
 }
 

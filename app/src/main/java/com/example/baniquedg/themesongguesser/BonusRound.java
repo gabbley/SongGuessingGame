@@ -20,6 +20,7 @@ public class BonusRound extends AppCompatActivity {
     public int numCorrect, numIncorrect;
     public TextView corr;
     public TextView incorr;
+    public ArrayList<Button> choices;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +29,11 @@ public class BonusRound extends AppCompatActivity {
         setContentView(R.layout.activity_bonus_round);
         btns = (GridLayout) findViewById(R.id.gridButtons);
         btnList = new ArrayList<>();
+        allButtons(); //places all buttons into an arrayList
         initialSetup();
 
     }
+
 
     public void initialSetup(){
 
@@ -41,10 +44,13 @@ public class BonusRound extends AppCompatActivity {
         corr.setText("0");
         incorr.setText("0");
 
-        allButtons(); //places all buttons into an arrayList
+        buttonSelect();
+    }
+
+    public void buttonSelect(){
         for (int i = 0; i<5; i++){ //randomly selects five buttons to color
-            randomColorButton().setBackgroundColor(Color.CYAN);
-        }
+            randomColorButton().setBackgroundColor(randColor());
+        } //have to find a way to uncolor them
     }
 
     //plays click sound every time button is clicked
@@ -55,20 +61,30 @@ public class BonusRound extends AppCompatActivity {
 
     public void allButtons(){
         for (int i = 0; i<20; i++){
-               btnList.add((Button) btns.getChildAt(i));
+            btnList.add((Button) btns.getChildAt(i));
         }
     }
 
     public void whenBtnClicked(View view){
-        //shuffleBtns(view);
+       // shuffleBtns(view);
         buttonClickSound();
         score();
+        buttonSelect();
+        decolor();
 
     }
 
     public Button randomColorButton(){
         int a = (int) (Math.random() * btns.getChildCount());
-        return btnList.get(a);
+        Button opt = btnList.get(a);
+        choices.add(opt);
+        return opt;
+    }
+
+    public void decolor(){
+        for (int i = 0; i<choices.size(); i++){
+            choices.get(i).setBackgroundColor(Color.TRANSPARENT);
+        }
     }
 
     public void btnIsPlaying(){
@@ -78,6 +94,15 @@ public class BonusRound extends AppCompatActivity {
     public void shuffleBtns(View view){ //i dont think this works
         long seed = System.nanoTime();
         Collections.shuffle(btnList, new Random(seed));
+    }
+
+    //returns a random color to set word to
+    public int randColor(){
+
+        int[] colorArray = new int[] {Color.YELLOW, Color.GREEN,
+                Color.RED, Color.BLUE, Color.MAGENTA, Color.BLACK};
+
+        return colorArray[(int)(Math.random() * colorArray.length) ];
     }
 
     public void score(){

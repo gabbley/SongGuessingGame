@@ -54,18 +54,21 @@
             android:id="@+id/btnOption2"
             android:layout_width="300dp"
             android:layout_height="60dp"
+            android:onClick="buttonClick"
             app:srcCompat="@android:drawable/bottom_bar" />
 
         <ImageButton
             android:id="@+id/btnOption3"
             android:layout_width="300dp"
             android:layout_height="60dp"
+            android:onClick="buttonClick"
             app:srcCompat="@android:drawable/bottom_bar" />
 
         <ImageButton
             android:id="@+id/imageButton"
             android:layout_width="300dp"
             android:layout_height="60dp"
+            android:onClick="buttonClick"
             app:srcCompat="@android:drawable/bottom_bar" />
     </LinearLayout>
 
@@ -93,6 +96,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="casual"
+            android:onClick="resetScreen"
             android:text="Reset"
             android:textStyle="bold" />
     </GridLayout>
