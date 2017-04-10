@@ -24,7 +24,7 @@ public class BonusRound extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bonus_round);
         btns = (GridLayout) findViewById(R.id.gridButtons);
@@ -43,14 +43,17 @@ public class BonusRound extends AppCompatActivity {
         numCorrect = 0;
         corr.setText("0");
         incorr.setText("0");
+        choices = new ArrayList<>();
 
         buttonSelect();
     }
 
     public void buttonSelect(){
         for (int i = 0; i<5; i++){ //randomly selects five buttons to color
-            randomColorButton().setBackgroundColor(randColor());
-        } //have to find a way to uncolor them
+            Button b = randomColorButton();
+            if (choices.indexOf(b) == -1)
+            b.setBackgroundColor(randColor());
+        }
     }
 
     //plays click sound every time button is clicked
@@ -61,8 +64,11 @@ public class BonusRound extends AppCompatActivity {
 
     public void allButtons(){
         for (int i = 0; i<20; i++){
-            btnList.add((Button) btns.getChildAt(i));
+            Button b = (Button) (btns.getChildAt(i));
+            b.setBackgroundColor(Color.LTGRAY);
+            btnList.add(b);
         }
+
     }
 
     public void whenBtnClicked(View view){
@@ -71,6 +77,7 @@ public class BonusRound extends AppCompatActivity {
         score();
         buttonSelect();
         decolor();
+        buttonSelect();
 
     }
 
@@ -83,7 +90,7 @@ public class BonusRound extends AppCompatActivity {
 
     public void decolor(){
         for (int i = 0; i<choices.size(); i++){
-            choices.get(i).setBackgroundColor(Color.TRANSPARENT);
+                choices.get(i).setBackgroundColor(Color.LTGRAY);
         }
     }
 
@@ -95,7 +102,6 @@ public class BonusRound extends AppCompatActivity {
         long seed = System.nanoTime();
         Collections.shuffle(btnList, new Random(seed));
     }
-
     //returns a random color to set word to
     public int randColor(){
 
