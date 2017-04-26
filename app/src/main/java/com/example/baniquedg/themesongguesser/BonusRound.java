@@ -34,7 +34,6 @@ public class BonusRound extends AppCompatActivity {
 
     }
 
-
     public void initialSetup(){
 
         corr = (TextView) findViewById(R.id.lblCorrectScore);
@@ -50,9 +49,18 @@ public class BonusRound extends AppCompatActivity {
 
     public void buttonSelect(){
         for (int i = 0; i<5; i++){ //randomly selects five buttons to color
-            Button b = randomColorButton();
-            if (choices.indexOf(b) == -1)
-            b.setBackgroundColor(randColor());
+            Button b1 = randomColorButton();
+            if (choices.size()>0)
+             if (choices.indexOf(b1) == -1)
+            b1.setBackgroundColor(randColor());
+           /* else {
+                if (choices.indexOf(randomColorButton()) == -1){
+                    Button b2 = randomColorButton();
+                    b2.setBackgroundColor(randColor());
+                }
+            }*/
+
+                //recursive?
         }
     }
 
