@@ -20,14 +20,16 @@ public class HomeScreen extends AppCompatActivity {
     }
 
     public void playGame(View view){
-        Class game = GuessSong.class;
-        Intent intent = new Intent(this, game);
-        startActivity(intent);
+        goToClass(GuessSong.class);
     }
 
     public void testBonus(View view){
-        Class bonus = BonusRound.class;
-        Intent intent = new Intent(this, bonus);
+        goToClass(BonusRound.class);
+
+    }
+
+    public void goToClass(Class c){
+        Intent intent = new Intent(this, c);
         startActivity(intent);
     }
 

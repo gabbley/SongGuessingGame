@@ -260,4 +260,13 @@
         android:layout_toEndOf="@+id/lblIncorrect"
         android:text="0"
         android:layout_toRightOf="@+id/lblIncorrect" />
+
+    <TextView
+        android:id="@+id/lblTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="13dp"
+        android:text="time left: 0 secs" />
 </RelativeLayout>

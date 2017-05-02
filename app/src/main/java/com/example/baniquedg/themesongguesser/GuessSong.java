@@ -3,6 +3,7 @@ package com.example.baniquedg.themesongguesser;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,7 @@ public class GuessSong extends AppCompatActivity {
     public int numCorrect, numIncorrect;
     public TextView corr;
     public TextView incorr;
+    public TextView timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +39,14 @@ public class GuessSong extends AppCompatActivity {
     public void initialSetup(){
         corr = (TextView) findViewById(R.id.lblCorrectScore);
         incorr = (TextView) findViewById(R.id.lblIncorrectScore);
+        timer = (TextView) findViewById(R.id.lblTimer);
         numIncorrect = 0;
         numCorrect = 0;
         corr.setText("0");
         incorr.setText("0");
         TextView title = (TextView) findViewById(R.id.txtGameTitle);
         discoTitle(title);
+        startTimer();
     }
 
     public void compareSong(){
@@ -59,66 +63,15 @@ public class GuessSong extends AppCompatActivity {
         click.start();
     }
 
-
-    //places all theme songs in an ArrayList
-    public ArrayList<MediaPlayer> arrSongs(ArrayList<MediaPlayer> playlist){
-        playlist.add(MediaPlayer.create(this, R.raw.backyardigans));
-        playlist.add(MediaPlayer.create(this, R.raw.bigcomfycouch));
-        playlist.add(MediaPlayer.create(this, R.raw.blues));
-        playlist.add(MediaPlayer.create(this, R.raw.fairlyodd));
-        playlist.add(MediaPlayer.create(this, R.raw.friends));
-        playlist.add(MediaPlayer.create(this, R.raw.hannahmontana));
-        playlist.add(MediaPlayer.create(this, R.raw.himym));
-        playlist.add(MediaPlayer.create(this, R.raw.icarly));
-        playlist.add(MediaPlayer.create(this, R.raw.kim));
-        playlist.add(MediaPlayer.create(this, R.raw.lazytown));
-        playlist.add(MediaPlayer.create(this, R.raw.lilostitch));
-        playlist.add(MediaPlayer.create(this, R.raw.onetreehill));
-        playlist.add(MediaPlayer.create(this, R.raw.proud));
-        playlist.add(MediaPlayer.create(this, R.raw.raven));
-        playlist.add(MediaPlayer.create(this, R.raw.sesamestreet));
-        playlist.add(MediaPlayer.create(this, R.raw.spongebob));
-        playlist.add(MediaPlayer.create(this, R.raw.suitelife));
-        playlist.add(MediaPlayer.create(this, R.raw.victorious));
-        playlist.add(MediaPlayer.create(this, R.raw.wizards));
-        playlist.add(MediaPlayer.create(this, R.raw.wonderpets));
-
-
-       /* MediaPlayer backyardigans = MediaPlayer.create(this, R.raw.backyardigans);
-        MediaPlayer bigcomfycouch = MediaPlayer.create(this, R.raw.bigcomfycouch);
-        MediaPlayer blues = MediaPlayer.create(this, R.raw.blues);
-        MediaPlayer fairlyodd = MediaPlayer.create(this, R.raw.fairlyodd);
-        MediaPlayer friends = MediaPlayer.create(this, R.raw.friends);
-        MediaPlayer handymanny = MediaPlayer.create(this, R.raw.handymanny);
-        MediaPlayer hannahmontana = MediaPlayer.create(this, R.raw.hannahmontana);
-        MediaPlayer himym = MediaPlayer.create(this, R.raw.himym);
-        MediaPlayer icarly = MediaPlayer.create(this, R.raw.icarly);
-        MediaPlayer kim = MediaPlayer.create(this, R.raw.kim);
-        MediaPlayer lazytown = MediaPlayer.create(this, R.raw.lazytown);
-        MediaPlayer lilostitch = MediaPlayer.create(this, R.raw.lilostitch);
-        MediaPlayer onetreehill = MediaPlayer.create(this, R.raw.onetreehill);
-        MediaPlayer proud = MediaPlayer.create(this, R.raw.proud);
-        MediaPlayer raven = MediaPlayer.create(this, R.raw.raven);
-        MediaPlayer sesamestreet = MediaPlayer.create(this, R.raw.sesamestreet);
-        MediaPlayer spongebob = MediaPlayer.create(this, R.raw.spongebob);
-        MediaPlayer suitelife = MediaPlayer.create(this, R.raw.suitelife);
-        MediaPlayer victorious = MediaPlayer.create(this, R.raw.victorious);
-        MediaPlayer wizards = MediaPlayer.create(this, R.raw.wizards);
-        MediaPlayer wonderpets = MediaPlayer.create(this, R.raw.wonderpets);
-        */
-        return playlist;
-    }
-
     //brings user to home screen
     public void homeScreen(View view) {
-        Class home = HomeScreen.class;
-        Intent intent = new Intent(this, home);
-        startActivity(intent);
+       goToClass(HomeScreen.class);
     }
 
     //updates score
     public void score(){
-        if (isCorrect()){
+        check();
+         if (isCorrect()){
             numCorrect++;
             corr.setText(numCorrect + "");
         }
@@ -127,6 +80,21 @@ public class GuessSong extends AppCompatActivity {
             incorr.setText(numIncorrect + "");
         }
 
+    }
+
+    //checks score
+    public void check(){
+        if (numCorrect == 15){
+            goToClass(BonusRound.class);
+        }
+        else if (numIncorrect == 10){
+            goToClass(LoseScreen.class);
+        }
+    }
+
+    public void goToClass(Class c){
+        Intent intent = new Intent(this, c);
+        startActivity(intent);
     }
 
     //determines if guess is correct
@@ -165,6 +133,21 @@ public class GuessSong extends AppCompatActivity {
                 Color.RED, Color.BLUE, Color.MAGENTA, Color.BLACK};
 
         return colorArray[(int)(Math.random() * colorArray.length) ];
+    }
+
+    public void startTimer(){
+        new CountDownTimer(30000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                timer.setText("time left: " + millisUntilFinished / 1000 + " secs");
+            }
+
+            public void onFinish() {
+                timer.setText("time left: 0 secs");
+                goToClass(LoseScreen.class);
+            }
+        }.start();
+
     }
 }
 

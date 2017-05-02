@@ -1,7 +1,9 @@
 package com.example.baniquedg.themesongguesser;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +23,7 @@ public class BonusRound extends AppCompatActivity {
     public TextView corr;
     public TextView incorr;
     public ArrayList<Button> choices;
+    public TextView timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,7 @@ public class BonusRound extends AppCompatActivity {
         numCorrect = 0;
         corr.setText("0");
         incorr.setText("0");
+        timer.setText("0");
         choices = new ArrayList<>();
 
         buttonSelect();
@@ -130,8 +134,27 @@ public class BonusRound extends AppCompatActivity {
         }
 
     }
+    public void goToClass(Class c){
+        Intent intent = new Intent(this, c);
+        startActivity(intent);
+    }
 
     public boolean isCorrect(){
         return true;
+    }
+
+    public void startTimer(){
+        new CountDownTimer(30000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                timer.setText("time left: " + millisUntilFinished / 1000 + " secs");
+            }
+
+            public void onFinish() {
+                timer.setText("time left: 0 secs");
+                goToClass(LoseScreen.class);
+            }
+        }.start();
+
     }
 }
