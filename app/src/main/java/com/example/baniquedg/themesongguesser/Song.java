@@ -2,6 +2,8 @@ package com.example.baniquedg.themesongguesser;
 
 import android.media.MediaPlayer;
 
+import java.util.ArrayList;
+
 /**
  * Created by baniquedg on 4/26/2017.
  */
@@ -49,7 +51,36 @@ public class Song {
         this.themeSong = themeSong;
     }
 
+    public Song tempSongs(){
 
+        ArrayList<Song> playlist = new ArrayList<>();
+
+        Song backyardigans = new Song();
+        backyardigans.setSongName("backyardigans");
+        backyardigans.setFileName("backyardigans.mp3");
+        MediaPlayer backyardigansTheme = MediaPlayer.create(this, R.raw.backyardigans);
+        backyardigans.setThemeSong(backyardigansTheme);
+        playlist.add(backyardigans);
+
+        Song bigcomfycouch = new Song();
+        bigcomfycouch = new Song();
+        bigcomfycouch.setSongName("big comfy couch");
+        bigcomfycouch.setFileName("bigcomfycouch.mp3");
+        MediaPlayer bigcomfycouchTheme = MediaPlayer.create(this, R.raw.bigcomfycouch);
+        bigcomfycouch.setThemeSong(bigcomfycouchTheme);
+        playlist.add(bigcomfycouch);
+
+        Song blues = new Song();
+        blues = new Song();
+        blues.setSongName("blues");
+        blues.setFileName("blues.mp3");
+        MediaPlayer bluesTheme = MediaPlayer.create(this, R.raw.bigcomfycouch);
+        blues.setThemeSong(bluesTheme);
+        playlist.add(blues);
+
+
+        return playlist.get(1); //make this one random
+    }
 
 
 

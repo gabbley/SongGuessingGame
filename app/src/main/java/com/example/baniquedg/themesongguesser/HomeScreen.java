@@ -12,15 +12,22 @@ import java.util.ArrayList;
 
 public class HomeScreen extends AppCompatActivity {
 
+    public ArrayList<Song> playlist;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
-
+        initialSetup();
     }
 
     public void playGame(View view){
         goToClass(GuessSong.class);
+    }
+
+    public void initialSetup(){
+        playlist = new ArrayList<>();
+
     }
 
     public void testBonus(View view){
@@ -33,36 +40,19 @@ public class HomeScreen extends AppCompatActivity {
         startActivity(intent);
     }
 
-    /*public void discoTitle(final TextView disco){
-        Thread t = new Thread() {
+    public Song getRandomSong(){
 
-
-            @Override
-            public void run() {
-                try {
-                    while (!isInterrupted()) {
-                        Thread.sleep(500);
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                disco.setTextColor(randColor());
-                            }
-                        });
-                    }
-                } catch (InterruptedException e) {
-                }
-            }
-        };
-
-        t.start();
+        return new Song();
     }
 
-    //returns a random color to set word to
-    public int randColor(){
+    public ArrayList<Song> fillPlaylist(ArrayList<Song> arr, int n){
 
-        int[] colorArray = new int[] {Color.YELLOW, Color.GREEN,
-                Color.RED, Color.BLUE, Color.MAGENTA, Color.BLACK};
+        for (int i = 0; i<n; i++){
+            arr.add(getRandomSong());
+        }
 
-        return colorArray[(int)(Math.random() * colorArray.length) ];
-    }*/
+        return arr;
+    }
+
+
 }
