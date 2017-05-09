@@ -1,5 +1,6 @@
 package com.example.baniquedg.themesongguesser;
 
+import android.app.Activity;
 import android.media.MediaPlayer;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ public class Song {
     private String fileName;
     private MediaPlayer themeSong;
 
+
     //arraylist in app/main class that doesn't go away
     //how to use a class between different screens
 
@@ -23,6 +25,7 @@ public class Song {
         songName = "no song";
         fileName = "file name";
         themeSong = null; //no file specified
+
     }
 
 
@@ -51,7 +54,7 @@ public class Song {
         this.themeSong = themeSong;
     }
 
-    public Song tempSongs(){
+ /*   public Song tempSongs(){
 
         ArrayList<Song> playlist = new ArrayList<>();
 
@@ -61,6 +64,8 @@ public class Song {
         MediaPlayer backyardigansTheme = MediaPlayer.create(this, R.raw.backyardigans);
         backyardigans.setThemeSong(backyardigansTheme);
         playlist.add(backyardigans);
+
+
 
         Song bigcomfycouch = new Song();
         bigcomfycouch = new Song();
@@ -78,9 +83,17 @@ public class Song {
         blues.setThemeSong(bluesTheme);
         playlist.add(blues);
 
+        Song fairlyodd = new Song();
+        fairlyodd = new Song();
+        fairlyodd.setSongName("fairlyodd");
+        fairlyodd.setFileName("fairlyodd.mp3");
+        MediaPlayer fairlyoddTheme = MediaPlayer.create(this, R.raw.fairlyodd);
+        fairlyodd.setThemeSong(fairlyoddTheme);
+        playlist.add(fairlyodd);
+
 
         return playlist.get(1); //make this one random
-    }
+    }*/
 
 
 

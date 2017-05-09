@@ -1,5 +1,6 @@
 package com.example.baniquedg.themesongguesser;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
@@ -18,12 +19,14 @@ public class GuessSong extends AppCompatActivity {
     public TextView corr;
     public TextView incorr;
     public TextView timer;
+    public static Activity a; //reference GuessSong.a
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_song);
         initialSetup();
+        a = this;
     }
 
     public String whichButtonClicked(){
