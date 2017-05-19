@@ -15,6 +15,7 @@ public class Song {
     private String songName;
     private String fileName;
     private MediaPlayer themeSong;
+    public Activity a;
 
 
     //arraylist in app/main class that doesn't go away
@@ -94,7 +95,6 @@ public class Song {
 
         return playlist.get(1); //make this one random
     }*/
-
 
 
 }

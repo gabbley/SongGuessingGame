@@ -1,5 +1,6 @@
 package com.example.baniquedg.themesongguesser;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
@@ -24,6 +25,7 @@ public class BonusRound extends AppCompatActivity {
     public TextView incorr;
     public ArrayList<Button> choices;
     public TextView timer;
+    public Activity a;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,7 @@ public class BonusRound extends AppCompatActivity {
         incorr.setText("0");
         timer.setText("0");
         choices = new ArrayList<>();
+        a = this;
 
         buttonSelect();
     }
@@ -158,101 +161,9 @@ public class BonusRound extends AppCompatActivity {
 
     }
 
-    public Song tempSongs(){
-
-        ArrayList<Song> playlist = new ArrayList<>();
-
-        Song backyardigans = new Song();
-        backyardigans.setSongName("backyardigans");
-        backyardigans.setFileName("backyardigans.mp3");
-        MediaPlayer backyardigansTheme = MediaPlayer.create(this, R.raw.backyardigans);
-        backyardigans.setThemeSong(backyardigansTheme);
-        playlist.add(backyardigans);
 
 
 
-        Song bigcomfycouch = new Song();
-        bigcomfycouch = new Song();
-        bigcomfycouch.setSongName("big comfy couch");
-        bigcomfycouch.setFileName("bigcomfycouch.mp3");
-        MediaPlayer bigcomfycouchTheme = MediaPlayer.create(this, R.raw.bigcomfycouch);
-        bigcomfycouch.setThemeSong(bigcomfycouchTheme);
-        playlist.add(bigcomfycouch);
 
-        Song blues = new Song();
-        blues = new Song();
-        blues.setSongName("blues");
-        blues.setFileName("blues.mp3");
-        MediaPlayer bluesTheme = MediaPlayer.create(this, R.raw.bigcomfycouch);
-        blues.setThemeSong(bluesTheme);
-        playlist.add(blues);
-
-        Song fairlyodd = new Song();
-        fairlyodd = new Song();
-        fairlyodd.setSongName("fairlyodd");
-        fairlyodd.setFileName("fairlyodd.mp3");
-        MediaPlayer fairlyoddTheme = MediaPlayer.create(this, R.raw.fairlyodd);
-        fairlyodd.setThemeSong(fairlyoddTheme);
-        playlist.add(fairlyodd);
-
-        Song friends = new Song();
-        friends = new Song();
-        friends.setSongName("friends");
-        friends.setFileName("friends.mp3");
-        MediaPlayer friendsTheme = MediaPlayer.create(this, R.raw.friends);
-        friends.setThemeSong(friendsTheme);
-        playlist.add(friends);
-
-        Song handymanny = new Song();
-        handymanny = new Song();
-        handymanny.setSongName("handymanny");
-        handymanny.setFileName("handymanny.mp3");
-        MediaPlayer handymannyTheme = MediaPlayer.create(this, R.raw.handymanny);
-        handymanny.setThemeSong(handymannyTheme);
-        playlist.add(handymanny);
-
-        Song hannahmontana = new Song();
-        hannahmontana = new Song();
-        hannahmontana.setSongName("hannahmontana");
-        hannahmontana.setFileName("hannahmontana.mp3");
-        MediaPlayer hannahmontanaTheme = MediaPlayer.create(this, R.raw.hannahmontana);
-        hannahmontana.setThemeSong(hannahmontanaTheme);
-        playlist.add(hannahmontana);
-
-        Song himym = new Song();
-        himym = new Song();
-        himym.setSongName("himym");
-        himym.setFileName("himym.mp3");
-        MediaPlayer himymTheme = MediaPlayer.create(this, R.raw.himym);
-        himym.setThemeSong(himymTheme);
-        playlist.add(himym);
-
-        Song icarly = new Song();
-        icarly = new Song();
-        icarly.setSongName("icarly");
-        icarly.setFileName("icarly.mp3");
-        MediaPlayer icarlyTheme = MediaPlayer.create(this, R.raw.icarly);
-        icarly.setThemeSong(icarlyTheme);
-        playlist.add(icarly);
-
-        Song kim = new Song();
-        kim = new Song();
-        kim.setSongName("kim");
-        kim.setFileName("kim.mp3");
-        MediaPlayer kimTheme = MediaPlayer.create(this, R.raw.kim);
-        kim.setThemeSong(kimTheme);
-        playlist.add(kim);
-
-        Song lazytown = new Song();
-        lazytown = new Song();
-        lazytown.setSongName("kim");
-        lazytown.setFileName("kim.mp3");
-        MediaPlayer lazytownTheme = MediaPlayer.create(this, R.raw.lazytown);
-        lazytown.setThemeSong(lazytownTheme);
-        playlist.add(kim);
-
-
-        return playlist.get(1); //make this one random
-    }
 
 }

@@ -40,6 +40,10 @@ public class HomeScreen extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void login(View view){
+        goToClass(LoginScreen.class);
+    }
+
     public Song getRandomSong(){
 
         return new Song();

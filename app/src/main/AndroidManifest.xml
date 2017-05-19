@@ -25,7 +25,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoseScreen"></activity>
+        <activity android:name=".LoseScreen" />
+        <activity android:name=".LoginScreen"></activity>
     </application>
 
 </manifest>
