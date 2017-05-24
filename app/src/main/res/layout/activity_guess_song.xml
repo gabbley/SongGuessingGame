@@ -65,7 +65,7 @@
             app:srcCompat="@android:drawable/bottom_bar" />
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/btnOption4"
             android:layout_width="300dp"
             android:layout_height="60dp"
             android:onClick="buttonClick"

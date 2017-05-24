@@ -1,7 +1,9 @@
 package com.example.baniquedg.themesongguesser;
 
 import android.app.Activity;
+import android.app.Application;
 import android.media.MediaPlayer;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -9,12 +11,14 @@ import java.util.ArrayList;
  * Created by baniquedg on 4/26/2017.
  */
 
-public class Song {
+public class Song extends Application {
 
     //fields
     private String songName;
     private String fileName;
     private MediaPlayer themeSong;
+    private String imgAlbum;
+    private String btnTag;
     public Activity a;
 
 
@@ -26,10 +30,10 @@ public class Song {
         songName = "no song";
         fileName = "file name";
         themeSong = null; //no file specified
+        imgAlbum = "no image";
+        btnTag = "no btn";
 
     }
-
-
 
     public String getSongName() {
         return songName;
@@ -41,6 +45,14 @@ public class Song {
 
     public MediaPlayer getThemeSong(){
         return themeSong;
+    }
+
+    public String getImgAlbum(){
+        return imgAlbum;
+    }
+
+    public String getBtnTag(){
+        return btnTag;
     }
 
     public void setFileName(String fileName) {
@@ -55,7 +67,15 @@ public class Song {
         this.themeSong = themeSong;
     }
 
- /*   public Song tempSongs(){
+    public void setImgAlbum(String imgAlbum){
+        this.imgAlbum = imgAlbum;
+    }
+
+    public void setBtnTag(String btnTag) {
+        this.btnTag = btnTag;
+    }
+
+    /*   public Song tempSongs(){
 
         ArrayList<Song> playlist = new ArrayList<>();
 
@@ -65,7 +85,6 @@ public class Song {
         MediaPlayer backyardigansTheme = MediaPlayer.create(this, R.raw.backyardigans);
         backyardigans.setThemeSong(backyardigansTheme);
         playlist.add(backyardigans);
-
 
 
         Song bigcomfycouch = new Song();
@@ -91,7 +110,6 @@ public class Song {
         MediaPlayer fairlyoddTheme = MediaPlayer.create(this, R.raw.fairlyodd);
         fairlyodd.setThemeSong(fairlyoddTheme);
         playlist.add(fairlyodd);
-
 
         return playlist.get(1); //make this one random
     }*/

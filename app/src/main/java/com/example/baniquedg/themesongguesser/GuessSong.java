@@ -114,6 +114,11 @@ public class GuessSong extends AppCompatActivity {
         opt3.setTag(randSong().getSongName());
     }
 
+    public void btnCorrect(){
+        ImageButton opt4 = (ImageButton) findViewById(R.id.btnOption4);
+        opt4.setTag(randSong().getSongName());
+    }
+
     public Song randSong(){
         return playlist.get((int) (Math.random() * playlist.size()));
     }
