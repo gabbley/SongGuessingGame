@@ -67,4 +67,48 @@
 
     </RelativeLayout>
 
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/lblWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="94dp"
+        android:layout_marginStart="94dp"
+        android:layout_marginTop="20dp"
+        android:text="Welcome Back, "
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/lblWelcomeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/lblWelcome"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_toEndOf="@+id/lblWelcome"
+        android:layout_toRightOf="@+id/lblWelcome"
+        android:text="Name" />
+
+    <TextView
+        android:id="@+id/lblCoins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblWelcome"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_toLeftOf="@+id/lblWelcomeName"
+        android:layout_toStartOf="@+id/lblWelcomeName"
+        android:text="Coins:" />
+
+    <TextView
+        android:id="@+id/lblCoinAmt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/lblCoins"
+        android:layout_toEndOf="@+id/lblCoins"
+        android:layout_toRightOf="@+id/lblCoins"
+        android:text="0" />
+
+</RelativeLayout>

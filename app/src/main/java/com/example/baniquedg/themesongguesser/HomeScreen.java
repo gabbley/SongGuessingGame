@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class HomeScreen extends AppCompatActivity {
 
     public ArrayList<Song> playlist;
+    private TextView welcomeName, coinAmt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,8 @@ public class HomeScreen extends AppCompatActivity {
 
     public void initialSetup(){
         playlist = new ArrayList<>();
-
+        welcomeName = (TextView) findViewById(R.id.lblWelcomeName);
+        coinAmt = (TextView) findViewById(R.id.lblCoinAmt);
     }
 
     public void testBonus(View view){

@@ -24,7 +24,7 @@ public class BonusRound extends AppCompatActivity {
     public TextView corr;
     public TextView incorr;
     public ArrayList<Button> choices;
-    public TextView timer;
+    public TextView timer, user;
     public Activity a;
 
     @Override
@@ -47,9 +47,12 @@ public class BonusRound extends AppCompatActivity {
         numCorrect = 0;
         corr.setText("0");
         incorr.setText("0");
-        timer.setText("0");
+        timer.setText("0");// String s = (Variables) this.getApplication().getCoins()
+       // user.setText();
         choices = new ArrayList<>();
         a = this;
+
+
 
         buttonSelect();
     }

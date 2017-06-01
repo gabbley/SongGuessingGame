@@ -54,9 +54,9 @@ public class GuessSong extends AppCompatActivity {
 
     }
 
-    public void storeScores(String name, int coins){
-        String fileName = "user_" + name;
-        String storedCoins =  "" + coins;
+    public void storeScores(User person){
+        String fileName = "user_" + person.getUsername();
+        String storedCoins =  "" + person.getUsercoins();
 
         try {
             FileOutputStream fos = openFileOutput(fileName, Context.MODE_PRIVATE);
@@ -71,9 +71,10 @@ public class GuessSong extends AppCompatActivity {
 
     }
 
-    public String retrieveScores(String name){
-        String fileName = "user_" + name;
-        String coinValue = "";
+    public String retrieveScores(User person){
+        String fileName = "user_" + person.getUsername();
+        String coinValue = "" + person.getUsercoins();
+
         try {
             FileInputStream fis = openFileInput(fileName);
             InputStreamReader isr = new InputStreamReader(fis);

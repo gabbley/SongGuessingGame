@@ -269,4 +269,14 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="13dp"
         android:text="time left: 0 secs" />
+
+    <TextView
+        android:id="@+id/lblUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/lblTimer"
+        android:layout_alignBottom="@+id/lblTimer"
+        android:layout_toLeftOf="@+id/lblCorrectScore"
+        android:layout_toStartOf="@+id/lblCorrectScore"
+        android:text="Username" />
 </RelativeLayout>

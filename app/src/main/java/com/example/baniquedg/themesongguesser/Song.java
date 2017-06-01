@@ -75,44 +75,6 @@ public class Song extends Application {
         this.btnTag = btnTag;
     }
 
-    /*   public Song tempSongs(){
-
-        ArrayList<Song> playlist = new ArrayList<>();
-
-        Song backyardigans = new Song();
-        backyardigans.setSongName("backyardigans");
-        backyardigans.setFileName("backyardigans.mp3");
-        MediaPlayer backyardigansTheme = MediaPlayer.create(this, R.raw.backyardigans);
-        backyardigans.setThemeSong(backyardigansTheme);
-        playlist.add(backyardigans);
-
-
-        Song bigcomfycouch = new Song();
-        bigcomfycouch = new Song();
-        bigcomfycouch.setSongName("big comfy couch");
-        bigcomfycouch.setFileName("bigcomfycouch.mp3");
-        MediaPlayer bigcomfycouchTheme = MediaPlayer.create(this, R.raw.bigcomfycouch);
-        bigcomfycouch.setThemeSong(bigcomfycouchTheme);
-        playlist.add(bigcomfycouch);
-
-        Song blues = new Song();
-        blues = new Song();
-        blues.setSongName("blues");
-        blues.setFileName("blues.mp3");
-        MediaPlayer bluesTheme = MediaPlayer.create(this, R.raw.bigcomfycouch);
-        blues.setThemeSong(bluesTheme);
-        playlist.add(blues);
-
-        Song fairlyodd = new Song();
-        fairlyodd = new Song();
-        fairlyodd.setSongName("fairlyodd");
-        fairlyodd.setFileName("fairlyodd.mp3");
-        MediaPlayer fairlyoddTheme = MediaPlayer.create(this, R.raw.fairlyodd);
-        fairlyodd.setThemeSong(fairlyoddTheme);
-        playlist.add(fairlyodd);
-
-        return playlist.get(1); //make this one random
-    }*/
 
 
 }

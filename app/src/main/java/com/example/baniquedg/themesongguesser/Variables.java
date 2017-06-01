@@ -9,13 +9,21 @@ import android.app.Application;
 public class Variables extends Application{
 
     private String coins = "";
+    private String username = "";
 
     public String getCoins(){
         return coins;
     }
 
-    public void setCoins(){
-        this.coins = coins;
+    public String getUsername() {
+        return username;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setCoins(String coins) {
+        this.coins = coins;
+    }
 }
