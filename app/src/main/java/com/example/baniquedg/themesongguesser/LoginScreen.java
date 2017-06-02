@@ -22,6 +22,8 @@ public class LoginScreen extends AppCompatActivity {
     public void loginInfo(){
         login = (EditText) findViewById(R.id.txtboxLogin);
         btnLogin = (Button) findViewById(R.id.btnLogin);
+        Variables example = (Variables) this.getApplication();
+        example.setUsername(login.getText().toString());
     }
 
     public void userLoggedIn(View view){

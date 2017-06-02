@@ -26,6 +26,7 @@ public class BonusRound extends AppCompatActivity {
     public ArrayList<Button> choices;
     public TextView timer, user;
     public Activity a;
+    public Variables username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,7 @@ public class BonusRound extends AppCompatActivity {
 
     public void initialSetup(){
 
+        username = (Variables) this.getApplication();
         corr = (TextView) findViewById(R.id.lblCorrectScore);
         incorr = (TextView) findViewById(R.id.lblIncorrectScore);
         numIncorrect = 0;
@@ -48,7 +50,7 @@ public class BonusRound extends AppCompatActivity {
         corr.setText("0");
         incorr.setText("0");
         timer.setText("0");// String s = (Variables) this.getApplication().getCoins()
-       // user.setText();
+        user.setText(username.getUsername());
         choices = new ArrayList<>();
         a = this;
 
