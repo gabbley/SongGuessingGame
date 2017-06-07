@@ -21,8 +21,8 @@ public class SplashScreen extends AppCompatActivity {
                 //splash opens for 3 seconds, then to home screen
                 try {
                     sleep(3000);
-                    Intent home = new Intent(SplashScreen.this, HomeScreen.class);
-                    startActivity(home);
+                    Intent login = new Intent(SplashScreen.this, LoginScreen.class);
+                    startActivity(login);
                     finish();
                 }
                 //prints out errors

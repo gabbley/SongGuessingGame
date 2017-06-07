@@ -30,6 +30,8 @@ public class HomeScreen extends AppCompatActivity {
         playlist = new ArrayList<>();
         welcomeName = (TextView) findViewById(R.id.lblWelcomeName);
         coinAmt = (TextView) findViewById(R.id.lblCoinAmt);
+        Variables getUser = (Variables) this.getApplication();
+        welcomeName.setText(getUser.getUsername().toString());
     }
 
     public void testBonus(View view){
