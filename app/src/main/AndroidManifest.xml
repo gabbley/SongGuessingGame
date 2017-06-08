@@ -3,7 +3,7 @@
     package="com.example.baniquedg.themesongguesser">
 
     <application
-        android:name="com.example.baniquedg.themesongguesser.Variables"
+        android:name=".Variables"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -27,7 +27,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoseScreen" />
-        <activity android:name=".LoginScreen"></activity>
+        <activity android:name=".LoginScreen" />
+        <activity android:name=".WinScreen"></activity>
     </application>
 
 </manifest>

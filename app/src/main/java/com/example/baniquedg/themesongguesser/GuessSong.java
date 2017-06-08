@@ -34,6 +34,9 @@ public class GuessSong extends AppCompatActivity {
     private Song mySong;
     private String clickedTag;
     private String playingTag;
+    private CountDownTimer counter;
+    private ImageButton opt1, opt2, opt3, opt4;
+    private ArrayList<ImageButton> btnOptions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +46,16 @@ public class GuessSong extends AppCompatActivity {
     }
 
     public void buttonClick(View view){
-        //returns tag of clicked button
-        Button b = (Button) findViewById(view.getId());
+        buttonClickSound();
+
+        //returns tag of clicked button for comparison
+        ImageButton b = (ImageButton) findViewById(view.getId());
         clickedTag = b.getTag().toString();
+
+        //updates score accordingly
         score();
-       // buttonClickSound();
+        playSong();
+
     }
 
 
@@ -101,6 +109,11 @@ public class GuessSong extends AppCompatActivity {
         startTimer();
         playlist = tempSongs();
 
+        opt1 = (ImageButton) findViewById(R.id.btnOption1); btnOptions.add(opt1);
+        opt2 = (ImageButton) findViewById(R.id.btnOption2); btnOptions.add(opt2);
+        opt3 = (ImageButton) findViewById(R.id.btnOption3); btnOptions.add(opt3);
+        opt4 = (ImageButton) findViewById(R.id.btnOption4); btnOptions.add(opt4);
+
         playSong(); //plays random song, sets field
 
     }
@@ -118,22 +131,17 @@ public class GuessSong extends AppCompatActivity {
         Song s2 = randSong();
         Song s3 = randSong();
 
-        ImageButton opt1 = (ImageButton) findViewById(R.id.btnOption1);
         opt1.setTag(s1.getSongName());
         opt1.setImageResource(s1.getImgAlbum());
 
-
-        ImageButton opt2 = (ImageButton) findViewById(R.id.btnOption2);
         opt2.setTag(s2.getSongName());
         opt2.setImageResource(s2.getImgAlbum());
 
-        ImageButton opt3 = (ImageButton) findViewById(R.id.btnOption3);
         opt3.setTag(s3.getSongName());
         opt3.setImageResource(s3.getImgAlbum());
     }
 
     public void btnCorrect(Song s){
-        ImageButton opt4 = (ImageButton) findViewById(R.id.btnOption4);
         opt4.setTag(s.getSongName());
         opt4.setImageResource(s.getImgAlbum());
     }
@@ -143,6 +151,10 @@ public class GuessSong extends AppCompatActivity {
     }
 
     public void resetScreen(View view){
+        if(counter != null) {
+            counter.cancel();
+            counter = null;
+        }
         initialSetup();
     }
 
@@ -160,11 +172,11 @@ public class GuessSong extends AppCompatActivity {
     //updates score
     public void score(){
         check();
-         if (clickedTag.equals(playingTag)){
+         if (clickedTag.equals(playingTag)){ //user correct answer
             numCorrect++;
             corr.setText(numCorrect + "");
         }
-        else{
+        else{ //user incorrect answer
             numIncorrect++;
             incorr.setText(numIncorrect + "");
         }
@@ -173,20 +185,27 @@ public class GuessSong extends AppCompatActivity {
 
     //checks score
     public void check(){
-        if (numCorrect == 15){
-            goToClass(BonusRound.class);
+        if (numCorrect == 10){ //win condition
+            if(counter != null) {
+                counter.cancel();
+                counter = null;
+            }
+            goToClass(WinScreen.class);
+            // goToClass(BonusRound.class);
         }
-        else if (numIncorrect == 10){
+        else if (numIncorrect == 10){ //lose condition
             goToClass(LoseScreen.class);
         }
     }
 
+    //goes to specified class
     public void goToClass(Class c){
         Intent intent = new Intent(this, c);
         startActivity(intent);
     }
 
 
+    //adds "disco" effect to TextView
     public void discoTitle(final TextView disco){
         Thread t = new Thread() {
 
@@ -220,13 +239,15 @@ public class GuessSong extends AppCompatActivity {
         return colorArray[(int)(Math.random() * colorArray.length) ];
     }
 
+    //starts timer in game
     public void startTimer(){
-        new CountDownTimer(30000, 1000) {
+        counter = new CountDownTimer(30000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 timer.setText("time left: " + millisUntilFinished / 1000 + " secs");
             }
 
+            //calls lose screen if win condition is not achieved in 30 seconds
             public void onFinish() {
                 timer.setText("time left: 0 secs");
                 goToClass(LoseScreen.class);
@@ -235,6 +256,8 @@ public class GuessSong extends AppCompatActivity {
 
     }
 
+
+    //hard coded songs
     public ArrayList<Song> tempSongs(){
 
         ArrayList<Song> playlist = new ArrayList<>();
@@ -251,7 +274,7 @@ public class GuessSong extends AppCompatActivity {
         blues.setSongName("blues");
         blues.setFileName("blues.mp3");
         blues.setImgAlbum(R.drawable.blues);
-        MediaPlayer bluesTheme = MediaPlayer.create(a, R.raw.bigcomfycouch);
+        MediaPlayer bluesTheme = MediaPlayer.create(a, R.raw.blues);
         blues.setThemeSong(bluesTheme);
         playlist.add(blues);
 
@@ -271,37 +294,13 @@ public class GuessSong extends AppCompatActivity {
         friends.setThemeSong(friendsTheme);
         playlist.add(friends);
 
-  /*      Song handymanny = new Song();
-        handymanny = new Song();
-        handymanny.setSongName("handymanny");
-        handymanny.setFileName("handymanny.mp3");
-        MediaPlayer handymannyTheme = MediaPlayer.create(a, R.raw.handymanny);
-        handymanny.setThemeSong(handymannyTheme);
-        playlist.add(handymanny);*/
-
-   /*     Song hannahmontana = new Song();
-        hannahmontana = new Song();
-        hannahmontana.setSongName("hannahmontana");
-        hannahmontana.setFileName("hannahmontana.mp3");
-        MediaPlayer hannahmontanaTheme = MediaPlayer.create(a, R.raw.hannahmontana);
-        hannahmontana.setThemeSong(hannahmontanaTheme);
-        playlist.add(hannahmontana);*/
-
-  /*      Song himym = new Song();
-        himym = new Song();
-        himym.setSongName("himym");
-        himym.setFileName("himym.mp3");
-        MediaPlayer himymTheme = MediaPlayer.create(a, R.raw.himym);
-        himym.setThemeSong(himymTheme);
-        playlist.add(himym);*/
-
-      /*  Song icarly = new Song();
-        icarly = new Song();
-        icarly.setSongName("icarly");
-        icarly.setFileName("icarly.mp3");
-        MediaPlayer icarlyTheme = MediaPlayer.create(a, R.raw.icarly);
-        icarly.setThemeSong(icarlyTheme);
-        playlist.add(icarly);*/
+        Song lilostitch = new Song();
+        lilostitch.setSongName("lilo");
+        lilostitch.setFileName("lilostitch.mp3");
+        lilostitch.setImgAlbum(R.drawable.lilo);
+        MediaPlayer lilostitchTheme = MediaPlayer.create(a, R.raw.lilostitch);
+        lilostitch.setThemeSong(lilostitchTheme);
+        playlist.add(lilostitch);
 
         Song kim = new Song();
         kim.setSongName("kim");
@@ -311,14 +310,13 @@ public class GuessSong extends AppCompatActivity {
         kim.setThemeSong(kimTheme);
         playlist.add(kim);
 
-
-       /* Song lazytown = new Song();
-        lazytown = new Song();
-        lazytown.setSongName("lazytown");
-        lazytown.setFileName("lazytown.mp3");
-        MediaPlayer lazytownTheme = MediaPlayer.create(a, R.raw.lazytown);
-        lazytown.setThemeSong(lazytownTheme);
-        playlist.add(lazytown);*/
+        Song proud = new Song();
+        proud.setSongName("proud");
+        proud.setFileName("proud.mp3");
+        proud.setImgAlbum(R.drawable.proud);
+        MediaPlayer proudTheme = MediaPlayer.create(a, R.raw.proud);
+        proud.setThemeSong(proudTheme);
+        playlist.add(proud);
 
         Song sesamestreet = new Song();
         sesamestreet.setSongName("sesamestreet");
@@ -327,7 +325,6 @@ public class GuessSong extends AppCompatActivity {
         MediaPlayer sesameStreetTheme = MediaPlayer.create(a, R.raw.sesamestreet);
         sesamestreet.setThemeSong(sesameStreetTheme);
         playlist.add(sesamestreet);
-
 
         Song raven = new Song();
         raven.setSongName("raven");
@@ -359,6 +356,16 @@ public class GuessSong extends AppCompatActivity {
         victorious.setImgAlbum(R.drawable.victorious);
         MediaPlayer victoriousTheme = MediaPlayer.create(a, R.raw.victorious);
         victorious.setThemeSong(victoriousTheme);
+        playlist.add(victorious);
+
+        Song wizards = new Song();
+        wizards.setSongName("wizards");
+        wizards.setFileName("wizards.mp3");
+        wizards.setImgAlbum(R.drawable.wizards);
+        MediaPlayer wizardsTheme = MediaPlayer.create(a, R.raw.wizards);
+        wizards.setThemeSong(wizardsTheme);
+        playlist.add(wizards);
+
 
 
         return playlist;

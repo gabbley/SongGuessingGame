@@ -132,6 +132,7 @@ public class BonusRound extends AppCompatActivity {
     }
 
     public void score(){
+        check();
         if (isCorrect()){
             numCorrect++;
             corr.setText(numCorrect + "");
@@ -141,6 +142,12 @@ public class BonusRound extends AppCompatActivity {
             incorr.setText(numIncorrect + "");
         }
 
+    }
+
+    public void check(){
+        if (numCorrect == 10){
+            goToClass(WinScreen.class);
+        }
     }
     public void goToClass(Class c){
         Intent intent = new Intent(this, c);
