@@ -17,7 +17,7 @@ public class Song extends Application {
     private String songName;
     private String fileName;
     private MediaPlayer themeSong;
-    private String imgAlbum;
+    private int imgAlbum;
     private String btnTag;
     public Activity a;
 
@@ -30,7 +30,7 @@ public class Song extends Application {
         songName = "no song";
         fileName = "file name";
         themeSong = null; //no file specified
-        imgAlbum = "no image";
+        imgAlbum = 0;
         btnTag = "no btn";
 
     }
@@ -47,7 +47,7 @@ public class Song extends Application {
         return themeSong;
     }
 
-    public String getImgAlbum(){
+    public int getImgAlbum(){
         return imgAlbum;
     }
 
@@ -67,7 +67,7 @@ public class Song extends Application {
         this.themeSong = themeSong;
     }
 
-    public void setImgAlbum(String imgAlbum){
+    public void setImgAlbum(int imgAlbum){
         this.imgAlbum = imgAlbum;
     }
 

@@ -2,6 +2,7 @@ package com.example.baniquedg.themesongguesser;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,10 +23,6 @@ public class HomeScreen extends AppCompatActivity {
         initialSetup();
     }
 
-    public void playGame(View view){
-        goToClass(GuessSong.class);
-    }
-
     public void initialSetup(){
         playlist = new ArrayList<>();
         welcomeName = (TextView) findViewById(R.id.lblWelcomeName);
@@ -34,10 +31,6 @@ public class HomeScreen extends AppCompatActivity {
         welcomeName.setText(getUser.getUsername().toString());
     }
 
-    public void testBonus(View view){
-        goToClass(BonusRound.class);
-
-    }
 
     public void goToClass(Class c){
         Intent intent = new Intent(this, c);
@@ -46,6 +39,16 @@ public class HomeScreen extends AppCompatActivity {
 
     public void login(View view){
         goToClass(LoginScreen.class);
+    }
+
+    public void play(View view){
+        goToClass(GuessSong.class);
+    }
+
+    public void rules(View view){
+        Uri uri = Uri.parse("http://sites.google.com/view/themesongguesser/home");
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
     }
 
     public Song getRandomSong(){

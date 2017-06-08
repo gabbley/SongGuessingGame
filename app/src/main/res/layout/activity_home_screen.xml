@@ -42,7 +42,7 @@
                 android:layout_width="330dp"
                 android:layout_height="76dp"
                 android:background="@drawable/play"
-                android:onClick="playGame" />
+                android:onClick="play" />
 
             <ImageButton
                 android:id="@+id/btnRules"
@@ -52,7 +52,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="66dp"
                 android:background="@drawable/rules"
-                android:onClick="playGame"
+                android:onClick="rules"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="0dp" />
 
