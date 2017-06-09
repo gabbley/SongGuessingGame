@@ -36,7 +36,7 @@ public class GuessSong extends AppCompatActivity {
     private String playingTag;
     private CountDownTimer counter;
     private ImageButton opt1, opt2, opt3, opt4;
-    private ArrayList<ImageButton> btnOptions;
+    private String justPlayed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,18 +108,29 @@ public class GuessSong extends AppCompatActivity {
         discoTitle(title);
         startTimer();
         playlist = tempSongs();
-
-        opt1 = (ImageButton) findViewById(R.id.btnOption1); btnOptions.add(opt1);
-        opt2 = (ImageButton) findViewById(R.id.btnOption2); btnOptions.add(opt2);
-        opt3 = (ImageButton) findViewById(R.id.btnOption3); btnOptions.add(opt3);
-        opt4 = (ImageButton) findViewById(R.id.btnOption4); btnOptions.add(opt4);
+        mySong = randSong();
 
         playSong(); //plays random song, sets field
 
     }
 
+
     public void playSong(){
-        mySong = randSong(); //gets random song
+        justPlayed = mySong.getSongName();
+        if (mySong.getThemeSong().isPlaying()){
+            mySong.getThemeSong().stop();
+        }
+
+        while (mySong.getSongName().equals(justPlayed)) {
+            mySong = randSong(); //gets random song
+        }
+
+        justPlayed = mySong.getSongName();
+
+        if (mySong.getThemeSong().isPlaying()){
+            mySong.getThemeSong().stop();
+        }
+
         mySong.getThemeSong().start(); //starts playing
         playingTag = mySong.getSongName(); //sets field to song for comparison
         btnCorrect(mySong); //assigns a button to the song
@@ -130,6 +141,10 @@ public class GuessSong extends AppCompatActivity {
         Song s1 = randSong();
         Song s2 = randSong();
         Song s3 = randSong();
+
+        opt1 = (ImageButton) findViewById(R.id.btnOption1);
+        opt2 = (ImageButton) findViewById(R.id.btnOption2);
+        opt3 = (ImageButton) findViewById(R.id.btnOption3);
 
         opt1.setTag(s1.getSongName());
         opt1.setImageResource(s1.getImgAlbum());
@@ -142,6 +157,7 @@ public class GuessSong extends AppCompatActivity {
     }
 
     public void btnCorrect(Song s){
+        opt4 = (ImageButton) findViewById(R.id.btnOption4);
         opt4.setTag(s.getSongName());
         opt4.setImageResource(s.getImgAlbum());
     }
@@ -166,6 +182,10 @@ public class GuessSong extends AppCompatActivity {
 
     //brings user to home screen
     public void homeScreen(View view) {
+        if(counter != null) {
+            counter.cancel();
+            counter = null;
+        }
        goToClass(HomeScreen.class);
     }
 
@@ -255,7 +275,6 @@ public class GuessSong extends AppCompatActivity {
         }.start();
 
     }
-
 
     //hard coded songs
     public ArrayList<Song> tempSongs(){
