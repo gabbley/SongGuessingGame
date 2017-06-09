@@ -117,24 +117,21 @@ public class GuessSong extends AppCompatActivity {
 
     public void playSong(){
         justPlayed = mySong.getSongName();
-        if (mySong.getThemeSong().isPlaying()){
+       /* if (mySong.getThemeSong().isPlaying()){
             mySong.getThemeSong().stop();
-        }
+        }*/
+
+        mySong = randSong();
 
         while (mySong.getSongName().equals(justPlayed)) {
             mySong = randSong(); //gets random song
-        }
-
-        justPlayed = mySong.getSongName();
-
-        if (mySong.getThemeSong().isPlaying()){
-            mySong.getThemeSong().stop();
         }
 
         mySong.getThemeSong().start(); //starts playing
         playingTag = mySong.getSongName(); //sets field to song for comparison
         btnCorrect(mySong); //assigns a button to the song
         assignRandBtn(); //randomly assigns other buttons
+        justPlayed = mySong.getSongName();
     }
 
     public void assignRandBtn(){ //hard coded
@@ -144,7 +141,7 @@ public class GuessSong extends AppCompatActivity {
 
         opt1 = (ImageButton) findViewById(R.id.btnOption1);
         opt2 = (ImageButton) findViewById(R.id.btnOption2);
-        opt3 = (ImageButton) findViewById(R.id.btnOption3);
+        opt4 = (ImageButton) findViewById(R.id.btnOption4);
 
         opt1.setTag(s1.getSongName());
         opt1.setImageResource(s1.getImgAlbum());
@@ -152,14 +149,14 @@ public class GuessSong extends AppCompatActivity {
         opt2.setTag(s2.getSongName());
         opt2.setImageResource(s2.getImgAlbum());
 
-        opt3.setTag(s3.getSongName());
-        opt3.setImageResource(s3.getImgAlbum());
+        opt4.setTag(s3.getSongName());
+        opt4.setImageResource(s3.getImgAlbum());
     }
 
     public void btnCorrect(Song s){
-        opt4 = (ImageButton) findViewById(R.id.btnOption4);
-        opt4.setTag(s.getSongName());
-        opt4.setImageResource(s.getImgAlbum());
+        opt3 = (ImageButton) findViewById(R.id.btnOption3);
+        opt3.setTag(s.getSongName());
+        opt3.setImageResource(s.getImgAlbum());
     }
 
     public Song randSong(){
@@ -193,10 +190,12 @@ public class GuessSong extends AppCompatActivity {
     public void score(){
         check();
          if (clickedTag.equals(playingTag)){ //user correct answer
-            numCorrect++;
+            mySong.getThemeSong().stop();
+             numCorrect++;
             corr.setText(numCorrect + "");
         }
         else{ //user incorrect answer
+             mySong.getThemeSong().stop();
             numIncorrect++;
             incorr.setText(numIncorrect + "");
         }

@@ -10,7 +10,7 @@ import android.widget.EditText;
 public class LoginScreen extends AppCompatActivity {
 
     private EditText login;
-    private Button btnLogin;
+   // private Button btnLogin;
 
 
     @Override
@@ -22,7 +22,7 @@ public class LoginScreen extends AppCompatActivity {
 
     public void loginInfo(){
         login = (EditText) findViewById(R.id.txtboxLogin);
-        btnLogin = (Button) findViewById(R.id.btnLogin);
+        //btnLogin = (Button) findViewById(R.id.btnLogin);
         Variables user = (Variables) this.getApplication();
         user.setUsername(login.getText().toString());
     }

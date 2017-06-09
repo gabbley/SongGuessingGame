@@ -28,6 +28,7 @@ public class BonusRound extends AppCompatActivity {
     public Activity a;
     public Variables username;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -172,10 +173,5 @@ public class BonusRound extends AppCompatActivity {
         }.start();
 
     }
-
-
-
-
-
 
 }
